@@ -3,40 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telegram Mini App with Share Message</title>
+  <title>Telegram Mini App</title>
   <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
 </head>
 <body>
 
   <h1>Welcome to the Telegram Mini App!</h1>
 
-  <button id="shareMessageBtn">Share This Message</button>
+  <button id="showMessageBtn">Show Message</button>
 
   <script>
     // Initialize Telegram Web App
     const tg = window.Telegram.WebApp;
 
-    // Expand app to full screen
+    // Expand app to full screen in Telegram's WebView
     tg.expand();
 
-    // Define the message you want to share
-    const messageId = '123456'; // Replace with actual message ID or content you want to share
+    // Ensure the main button is set up and visible
+    tg.MainButton.setText("Click Me!");
+    tg.MainButton.show();
 
-    // Button click handler to share the message
-    document.getElementById('shareMessageBtn').addEventListener('click', function () {
-      // Call the shareMessage method
-      tg.shareMessage(messageId, function(response) {
-        if (response) {
-          console.log("Message shared successfully:", response);
-        } else {
-          console.log("Failed to share message.");
-        }
-      });
+    // Add an event listener for the button click
+    document.getElementById('showMessageBtn').addEventListener('click', function () {
+      // Show a message to the user within the WebApp
+      alert("Hello, this is a message from the mini app!");
     });
 
-    // Main Button Setup (optional)
-    tg.MainButton.setText("Share this message!");
-    tg.MainButton.show();
+    // Optionally, handle the main button click event from Telegram WebApp
+    tg.onEvent('mainButtonClicked', function () {
+      alert("You clicked the main button!");
+    });
   </script>
 
 </body>
