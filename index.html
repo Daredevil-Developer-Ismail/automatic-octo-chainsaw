@@ -20,16 +20,16 @@
     tg.expand();
 
     // Define the message you want to share
-    const messageId = '123456'; // Replace with actual message ID or content you want to share
+    const messageId = '10'; // Replace with actual message ID or content you want to share
 
     // Button click handler to share the message
     document.getElementById('shareMessageBtn').addEventListener('click', function () {
       // Call the shareMessage method
       tg.shareMessage(messageId, function(response) {
         if (response) {
-          console.log("Message shared successfully:", response);
+          alert("Message shared successfully:", response);
         } else {
-          console.log("Failed to share message.");
+          alert("Failed to share message.");
         }
       });
     });
