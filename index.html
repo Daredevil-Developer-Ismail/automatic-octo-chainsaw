@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Mini App with Share Message</title>
+  <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+</head>
+<body>
+
+  <h1>Welcome to the Telegram Mini App!</h1>
+
+  <button id="shareMessageBtn">Share This Message</button>
+
+  <script>
+    // Initialize Telegram Web App
+    const tg = window.Telegram.WebApp;
+
+    // Expand app to full screen
+    tg.expand();
+
+    // Define the message you want to share
+    const messageId = '123456'; // Replace with actual message ID or content you want to share
+
+    // Button click handler to share the message
+    document.getElementById('shareMessageBtn').addEventListener('click', function () {
+      // Call the shareMessage method
+      tg.shareMessage(messageId, function(response) {
+        if (response) {
+          console.log("Message shared successfully:", response);
+        } else {
+          console.log("Failed to share message.");
+        }
+      });
+    });
+
+    // Main Button Setup (optional)
+    tg.MainButton.setText("Share this message!");
+    tg.MainButton.show();
+  </script>
+
+</body>
+</html>
